@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="home-link">Home</a>
+            <input type="text" id="search-bar" class="search-bar" placeholder="Search..." oninput="searchScripts()">
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Featured Scripts</h2>
+            <div class="item" data-title="Ultimate Stand Script in The Strongest Battleground">
+                <div class="item-image">
+                    <img src="https://img.youtube.com/vi/0mnGcM-6n2I/maxresdefault.jpg" alt="YouTube Video Thumbnail">
+                </div>
+                <h3>Ultimate Stand Script in The Strongest Battleground</h3>
+                <p>This script lets you to control or to be controlled by the players you want. Credits to: Wisp(w.is.p) in Discord!</p>
+                <button class="get-script" onclick="window.location.href='https://rkns.link/vltlt'">Get Script from YouTube</button>
+                <button class="get-script" onclick="window.location.href='https://rkns.link/bkdus'">Get Script from Tiktok</button>
+            </div>
+
+            <p id="no-results-message" style="display: none; color: red; font-size: 1.2rem;">No scripts found</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024  Menace. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function searchScripts() {
+            const searchQuery = document.getElementById('search-bar').value.toLowerCase();
+            const items = document.querySelectorAll('.item');
+            let resultsFound = false;
+
+            items.forEach(item => {
+                const title = item.getAttribute('data-title').toLowerCase();
+                if (title.includes(searchQuery)) {
+                    item.style.display = 'block';
+                    resultsFound = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            const noResultsMessage = document.getElementById('no-results-message');
+            if (resultsFound) {
+                noResultsMessage.style.display = 'none';
+            } else {
+                noResultsMessage.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
