@@ -57,21 +57,7 @@ h2 {
     margin-bottom: 20px;
 }
 
-.content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
 
-.item {
-    background: #3a3a3a;
-    padding: 20px;
-    border-radius: 8px;
-    width: 48%;
-    margin-bottom: 20px;
-    position: relative;
-    overflow: hidden;
-}
 
 .item h3 {
     font-size: 1.6rem;
