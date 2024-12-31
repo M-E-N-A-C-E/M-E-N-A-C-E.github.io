@@ -61,26 +61,32 @@
             </div>
         </footer>
         <script>
-            // Linkvertise Initialization
             linkvertise(1202965, {
                 whitelist: [],
-                blacklist: [""] 
+                blacklist: [] 
             });
-    
-            // Prevent monetization of internal links
+        
             document.querySelectorAll('a').forEach(link => {
                 const isExternal = link.href.startsWith('http') && !link.href.includes(window.location.hostname);
                 if (!isExternal) {
                     link.setAttribute('data-linkvertise', 'false');
                 }
             });
-    
-            // Search function
+        
+            document.querySelectorAll('.get-script').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const targetUrl = button.getAttribute('onclick').match(/'(.*?)'/)[1];
+                    if (targetUrl && targetUrl.startsWith('https://')) {
+                        linkvertise(targetUrl);
+                    }
+                });
+            });
+        
             function searchScripts() {
                 const searchQuery = document.getElementById('search-bar').value.toLowerCase();
                 const items = document.querySelectorAll('.item');
                 let resultsFound = false;
-    
+        
                 items.forEach(item => {
                     const title = item.getAttribute('data-title').toLowerCase();
                     if (title.includes(searchQuery)) {
@@ -90,7 +96,7 @@
                         item.style.display = 'none';
                     }
                 });
-    
+        
                 const noResultsMessage = document.getElementById('no-results-message');
                 if (resultsFound) {
                     noResultsMessage.style.display = 'none';
