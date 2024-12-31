@@ -60,6 +60,31 @@
                 <p>&copy; 2024 Menace. All rights reserved.</p>
             </div>
         </footer>
+        <script>
+            linkvertise(1202965, {
+                whitelist: [],
+                blacklist: [] 
+            });
+        
+            // Prevent monetization of internal links
+            document.querySelectorAll('a').forEach(link => {
+                const isExternal = link.href.startsWith('http') && !link.href.includes(window.location.hostname);
+                if (!isExternal) {
+                    link.setAttribute('data-linkvertise', 'false');
+                }
+            });
+        
+            // Apply monetization to external links in button clicks
+            document.querySelectorAll('.get-script').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const targetUrl = button.getAttribute('onclick').match(/'(.*?)'/)[1];
+                    if (targetUrl && targetUrl.startsWith('https://')) {
+                        // Make sure Linkvertise is triggered for external links
+                        linkvertise(targetUrl);
+                    }
+                });
+            });
+        </script>
     </body>
 
 </html>
